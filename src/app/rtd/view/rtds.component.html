@@ -1,0 +1,7 @@
+<p-dataTable [value]="rtds" [rows]="10" [paginator]="true"
+		selectionMode="single" [(selection)]="selectedRTD" dataKey="trtdId" (onRowSelect)="handleRowSelect($event)">
+    <p-column field="trtdId" header="序号"></p-column>
+    <p-column field="itdId" header="测试数据序号"></p-column>
+    <p-column field="trtdName" header="测试数据名称"></p-column>
+    <p-column field="trtdResult" header="运行结果"></p-column>
+</p-dataTable>

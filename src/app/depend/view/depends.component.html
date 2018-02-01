@@ -1,0 +1,7 @@
+<p-dataTable [style]="{'text-align': 'center'}" [value]="depends" [rows]="10" [paginator]="true"
+		selectionMode="single" [(selection)]="selectedDepend" dataKey="itddId" (onRowSelect)="handleRowSelect($event)">
+    <p-column field="itddId" header="依赖数据序号"></p-column>
+    <p-column field="itdName" header="测试数据名称"></p-column>
+    <p-column field="itddDependency" header="依赖"></p-column>
+    <p-column field="itddType" header="类型"></p-column>
+</p-dataTable>

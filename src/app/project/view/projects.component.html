@@ -1,0 +1,7 @@
+<p-dataTable [style]="{'text-align': 'center'}" [value]="projects" [rows]="10" [paginator]="true"
+		selectionMode="single" [(selection)]="selectedProject" dataKey="mpId" (onRowSelect)="handleRowSelect($event)">
+    <p-column field="mpId" header="项目序号"></p-column>
+    <p-column field="mpName" header="项目名称"></p-column>
+    <p-column field="mpDescription" header="项目描述"></p-column>
+    <p-column field="mpUrlPrefixion" header="URL前缀"></p-column>
+</p-dataTable>

@@ -1,0 +1,7 @@
+<p-dataTable [style]="{'text-align': 'center'}" [value]="urls" [rows]="10" [paginator]="true"
+		selectionMode="single" [(selection)]="selectedUrl" dataKey="mumId" (onRowSelect)="handleRowSelect($event)">
+    <p-column field="mumId" header="接口序号"></p-column>
+    <p-column field="mumName" header="接口名称"></p-column>
+    <p-column field="mumUrlPath" header="请求路径"></p-column>
+    <p-column field="mumMethodType" header="请求方式"></p-column>
+</p-dataTable>

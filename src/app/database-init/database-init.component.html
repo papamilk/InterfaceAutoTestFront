@@ -1,0 +1,22 @@
+<div class="left-margin">
+  <p-growl [value]="msgs" life="3000"></p-growl>
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+  	<div class="ui-grid-row">
+	  <div class="ui-grid-col-2">
+		<label>初始化数据库</label>
+      </div>
+      <div class="ui-grid-col-6">
+      	<p-dropdown [options]="dbNames"  [(ngModel)]="selectedName" (onChange)="onChange()" placeholder="请选择初始化数据库" [autoWidth]="false"></p-dropdown>
+      </div>
+      <div class="ui-grid-col-4">
+      </div>
+    </div>
+    <div class="ui-grid-row">
+	  <div class="ui-grid-col-2"></div>
+	  <div class="ui-grid-col-6">
+  		<button pButton (click)="onSubmit()" class="ui-button-warning" label="初始化" [disabled]="!submitted"></button>
+	  </div>
+   	  <div class="ui-grid-col-4"></div>
+    </div>
+  </div>
+</div>

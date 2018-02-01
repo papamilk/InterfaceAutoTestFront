@@ -1,0 +1,169 @@
+<div class="left-margin">
+  <h1>测试数据详情</h1>
+  <p-growl [value]="msgs" life="3000"></p-growl>
+  <div *ngIf="td">
+  <form #userform="ngForm" (ngSubmit)="onSubmit(userform.value)">
+		<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+			<div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>测试数据序号: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="itdId" [(ngModel)]="td.itdId" #itdId="ngModel" disabled="true"/>
+	    </div>
+	    <div class="ui-grid-col-4"></div>
+		</div>
+		<div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>接口名称: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="mumName" [(ngModel)]="td.mumName" #mumName="ngModel" placeholder="必填" disabled="true"/>
+	    </div>
+	    <div class="ui-grid-col-4">
+	    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>接口序号(*): </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="mumId" [(ngModel)]="td.mumId" #mumId="ngModel" pattern="^[1-9][0-9]{0,10}$" placeholder="必填" required="true"/>
+	    </div>
+	    <div class="ui-grid-col-4">
+	    	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!mumId.valid&&mumId.dirty">
+	        <i class="fa fa-close"></i>
+						接口序号为正整数，不能为空且不超过11位
+	    	</div>
+	    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2">
+		  		<label>测试数据名称: </label>
+		  	</div>
+		    <div class="ui-grid-col-6">
+		    	<input type="text" pInputText name="itdName" [(ngModel)]="td.itdName" #itdName="ngModel" maxlength="30" placeholder="选填"/>
+		    </div>
+		    <div class="ui-grid-col-4">
+		    	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!itdName.valid&&itdName.dirty">
+	        <i class="fa fa-close"></i>
+						测试数据名称不超过30字符
+	    	</div>
+		    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2">
+		  		<label>阻断类型: </label>
+		  	</div>
+		  	<div class="ui-grid-col-6">
+		  		<input type="text" pInputText name="itdType" [(ngModel)]="td.itdType" #itdType="ngModel" pattern="^[0-1]$" placeholder="选填"/>
+		  	</div>
+		  	<div class="ui-grid-col-4">
+		  		<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!itdType.valid&&itdType.dirty">
+	        <i class="fa fa-close"></i>
+						阻断类型为0或者1
+	    	</div>
+		  	</div>
+		  </div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>预期运行时间: </label>
+	      </div>
+	      <div class="ui-grid-col-6">
+	        <input pInputText type="text" name="itdExpectTime" [(ngModel)]="td.itdExpectTime" #itdExpectTime="ngModel" pattern="^0$|^[1-9][0-9]{0,7}$" placeholder="选填"/>
+	      </div>
+	      <div class="ui-grid-col-4">
+		    	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!itdExpectTime.valid&&itdExpectTime.dirty">
+		        <i class="fa fa-close"></i>
+							非负数，不超过8位
+		    	</div>
+	    	</div>
+		  </div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>参数名: </label>
+	      </div>
+	      <div class="ui-grid-col-6">
+	      	<textarea pInputTextarea name="itdCols" [(ngModel)]="td.itdCols" autoResize="true" placeholder="必填"></textarea>
+	      </div>
+	      <div class="ui-grid-col-4">
+	    	</div>
+		  </div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>参数值: </label>
+	      </div>
+	      <div class="ui-grid-col-6">
+	      	<textarea pInputTextarea name="itdValues" [(ngModel)]="td.itdValues" autoResize="autoResize" placeholder="必填"></textarea>
+	      </div>
+	      <div class="ui-grid-col-4">
+	    	</div>
+		  </div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>预期结果: </label>
+	      </div>
+	      <div class="ui-grid-col-6">
+	      	<textarea pInputTextarea rows="8" #itdExpectResult="ngModel" name="itdExpectResult" [(ngModel)]="td.itdExpectResult" autoResize="autoResize"></textarea>
+	      </div>
+	      <div class="ui-grid-col-4">
+	    	</div>
+		  </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-2">
+          <label>赋值参数: </label>
+        </div>
+        <div class="ui-grid-col-6">
+          <textarea pInputTextarea rows="3" #mdpName="ngModel" name="mdpName" [(ngModel)]="td.mdpName" autoResize="autoResize" placeholder="选填"></textarea>
+        </div>
+        <div class="ui-grid-col-4">
+        </div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-2">
+          <label>赋值公式: </label>
+        </div>
+        <div class="ui-grid-col-6">
+          <textarea pInputTextarea rows="3" #mdpFormula="ngModel" name="mdpFormula" [(ngModel)]="td.mdpFormula" autoResize="autoResize" placeholder="选填"></textarea>
+        </div>
+        <div class="ui-grid-col-4">
+        </div>
+      </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2">
+		  		<label>SQL: </label>
+		  	</div>
+		    <div class="ui-grid-col-6">
+		    	<textarea pInputTextarea rows="3" #itdSql="ngModel" name="itdSql" [(ngModel)]="td.itdSql" autoResize="autoResize" placeholder="选填"></textarea>
+		    </div>
+		    <div class="ui-grid-col-4">
+		    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2">
+		  		<label>SQL期望值: </label>
+		  	</div>
+		    <div class="ui-grid-col-6">
+		    	<textarea pInputTextarea rows="3" #itdSqlExpectResult="ngModel" name="itdSqlExpectResult" [(ngModel)]="td.itdSqlExpectResult" autoResize="autoResize" placeholder="选填"></textarea>
+		    </div>
+		    <div class="ui-grid-col-4">
+		    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="submit" class="ui-button-warning" label="更新" [disabled]="!userform.valid" ></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="button" (click)="goBack()"  label="返回"></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		</div>
+	</form>
+	</div>
+</div>

@@ -1,0 +1,86 @@
+<div class="left-margin">
+  <h1>依赖数据详情</h1>
+  <p-growl [value]="msgs" life="3000"></p-growl>
+  <div *ngIf="depend">
+  <form #userform="ngForm" (ngSubmit)="onSubmit(userform.value)">
+		<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+			<div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>依赖数据序号: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="itddId" [(ngModel)]="depend.itddId" disabled="true"/>
+	    </div>
+	    <div class="ui-grid-col-4"></div>
+		</div>
+		<div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>测试数据名称: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="itdName" [(ngModel)]="depend.itdName" #itdName="ngModel" pattern="^[1-9][0-9]{0,10}$" placeholder="必填" required="true" disabled="true"/>
+	    </div>
+	    <div class="ui-grid-col-4">
+	    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>测试数据序号: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="itddDependency" [(ngModel)]="depend.itddDependency" #itddDependency="ngModel" pattern="^[1-9][0-9]{0,10}$" placeholder="必填" required="true"/>
+	    </div>
+	    <div class="ui-grid-col-4">
+	    	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!itddDependency.valid&&itddDependency.dirty">
+	        <i class="fa fa-close"></i>
+						测试数据序号为正整数，不能为空且不超过11位
+	    	</div>
+	    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2">
+		  		<label>依赖: </label>
+		  	</div>
+		    <div class="ui-grid-col-6">
+		    	<input type="text" pInputText name="itddDependency" [(ngModel)]="depend.itddDependency" #itddDependency="ngModel" maxlength="50" placeholder="选填"/>
+		    </div>
+		    <div class="ui-grid-col-4">
+		    	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!itddDependency.valid&&itddDependency.dirty">
+	        <i class="fa fa-close"></i>
+						依赖不超过50字符
+	    	</div>
+		    </div>
+		  </div>
+		  <div class="ui-grid-row"> 
+		  	<div class="ui-grid-col-2">
+		  		<label>类型: </label>
+		  	</div>
+		  	<div class="ui-grid-col-6">
+		  		<input type="text" pInputText name="itddType" [(ngModel)]="depend.itddType" #itddType="ngModel" maxlength="50" placeholder="选填"/>
+		  	</div>
+		  	<div class="ui-grid-col-4">
+		  		<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!itddType.valid&&itddType.dirty">
+	        <i class="fa fa-close"></i>
+						类型不超过50字符
+	    	</div>
+		  	</div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="submit" class="ui-button-warning" label="更新" [disabled]="!userform.valid" ></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="button" (click)="goBack()"  label="返回"></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		</div>
+	
+	</form>
+	</div>
+</div>

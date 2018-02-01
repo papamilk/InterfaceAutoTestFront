@@ -1,0 +1,67 @@
+<div class="left-margin">
+  <h1>接口结果详情</h1>
+  <p-growl [value]="msgs" life="3000"></p-growl>
+  <div *ngIf="rurl">
+  <form #userform="ngForm" (ngSubmit)="onSubmit(userform.value)">
+		<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+			<div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>序号: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="truId" [(ngModel)]="rurl.truId" disabled="true"/>
+	    </div>
+	    <div class="ui-grid-col-4"></div>
+		</div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>测试用例结果序号: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="trtcId" [(ngModel)]="rurl.trtcId" #trtcId="ngModel" pattern="^[1-9][0-9]{0,10}$" placeholder="必填" required="true"/>
+	    </div>
+	    <div class="ui-grid-col-4">
+	    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>接口序号: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="mumId" [(ngModel)]="rurl.mumId" #mumId="ngModel" pattern="^[1-9][0-9]{0,10}$" placeholder="必填" required="true"/>
+	    </div>
+	    <div class="ui-grid-col-4">
+	    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2">
+		  		<label>接口名称: </label>
+		  	</div>
+		    <div class="ui-grid-col-6">
+		    	<input type="text" pInputText name="mumName" [(ngModel)]="rurl.mumName" #mumName="ngModel" maxlength="30" placeholder="选填"/>
+		    </div>
+		    <div class="ui-grid-col-4">
+		    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>运行结果: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="truResult" [(ngModel)]="rurl.truResult" required="true"/>
+	    </div>
+	    <div class="ui-grid-col-4">
+	    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="button" (click)="goBack()"  label="返回"></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		</div>
+	
+	</form>
+	</div>
+</div>

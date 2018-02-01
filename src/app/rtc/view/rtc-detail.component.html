@@ -1,0 +1,75 @@
+<div class="left-margin">
+  <h1>测试用例结果详情</h1>
+  <p-growl [value]="msgs" life="3000"></p-growl>
+  <div *ngIf="rtc">
+  <form #userform="ngForm" (ngSubmit)="onSubmit(userform.value)">
+		<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+			<div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>序号: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="trtcId" [(ngModel)]="rtc.trtcId" disabled="true"/>
+	    </div>
+	    <div class="ui-grid-col-4"></div>
+		</div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>执行步骤结果序号: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="trsId" [(ngModel)]="rtc.trsId" #trsId="ngModel" pattern="^[1-9][0-9]{0,10}$" placeholder="必填" required="true"/>
+	    </div>
+	    <div class="ui-grid-col-4">
+	    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>测试用例序号: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="mtcId" [(ngModel)]="rtc.mtcId" #mtcId="ngModel" pattern="^[1-9][0-9]{0,10}$" placeholder="必填" required="true"/>
+	    </div>
+	    <div class="ui-grid-col-4">
+	    	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!mtcId.valid&&mtcId.dirty">
+	        <i class="fa fa-close"></i>
+						执行场景序号为正整数，不能为空且不超过11位
+	    	</div>
+	    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2">
+		  		<label>测试用例名称: </label>
+		  	</div>
+		    <div class="ui-grid-col-6">
+		    	<input type="text" pInputText name="mtcName" [(ngModel)]="rtc.mtcName" #mtcName="ngModel" maxlength="30" placeholder="选填"/>
+		    </div>
+		    <div class="ui-grid-col-4">
+		    	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!mtcName.valid&&mtcName.dirty">
+	        <i class="fa fa-close"></i>
+						执行名称不超过30字符
+	    	</div>
+		    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>运行结果: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="trtcResult" [(ngModel)]="rtc.trtcResult" required="true"/>
+	    </div>
+	    <div class="ui-grid-col-4">
+	    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="button" (click)="goBack()"  label="返回"></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		</div>
+	
+	</form>
+	</div>
+</div>

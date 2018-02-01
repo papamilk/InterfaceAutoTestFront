@@ -1,0 +1,6 @@
+<p-dataTable [style]="{'text-align': 'center'}" [value]="tcs" [rows]="10" [paginator]="true"
+		selectionMode="single" [(selection)]="selectedTc" dataKey="mtcId" (onRowSelect)="handleRowSelect($event)">
+    <p-column field="mtcId" header="测试用例序号"></p-column>
+    <p-column field="mtcName" header="测试用例名称"></p-column>
+    <p-column field="mtcType" header="测试用例类型"></p-column>
+</p-dataTable>

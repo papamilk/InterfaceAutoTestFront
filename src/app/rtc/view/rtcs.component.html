@@ -1,0 +1,7 @@
+<p-dataTable [style]="{'text-align': 'center'}" [value]="rtcs" [rows]="10" [paginator]="true"
+		selectionMode="single" [(selection)]="selectedRTC" dataKey="trtcId" (onRowSelect)="handleRowSelect($event)">
+    <p-column field="trtcId" header="序号"></p-column>
+    <p-column field="mtcId" header="测试用例序号"></p-column>
+    <p-column field="mtcName" header="测试用例名称"></p-column>
+    <p-column field="trtcResult" header="运行结果"></p-column>
+</p-dataTable>

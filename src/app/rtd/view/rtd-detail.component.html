@@ -1,0 +1,107 @@
+<div class="left-margin">
+  <h1>执行场景结果详情</h1>
+  <p-growl [value]="msgs" life="3000"></p-growl>
+  <div *ngIf="rtd">
+  <form #userform="ngForm" (ngSubmit)="onSubmit(userform.value)">
+		<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+			<div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>序号: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="trtdId" [(ngModel)]="rtd.trtdId" disabled="true"/>
+	    </div>
+	    <div class="ui-grid-col-4"></div>
+		</div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>接口结果序号: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="truId" [(ngModel)]="rtd.truId" #truId="ngModel" pattern="^[1-9][0-9]{0,10}$" placeholder="必填" required="true"/>
+	    </div>
+	    <div class="ui-grid-col-4">
+	    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>测试数据序号: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="itdId" [(ngModel)]="rtd.itdId" #itdId="ngModel" pattern="^[1-9][0-9]{0,10}$" placeholder="必填" required="true"/>
+	    </div>
+	    <div class="ui-grid-col-4">
+	    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2">
+		  		<label>测试数据名称: </label>
+		  	</div>
+		    <div class="ui-grid-col-6">
+		    	<input type="text" pInputText name="trtdName" [(ngModel)]="rtd.trtdName" #trtdName="ngModel" maxlength="30" placeholder="选填"/>
+		    </div>
+		    <div class="ui-grid-col-4">
+		    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>执行时间: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="trtdTime" [(ngModel)]="rtd.trtdTime" required="true"/>
+	    </div>
+	    <div class="ui-grid-col-4">
+	    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>错误描述: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="trtdErrorDescription" [(ngModel)]="rtd.trtdErrorDescription" required="true"/>
+	    </div>
+	    <div class="ui-grid-col-4">
+	    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>实际返回值: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+				<textarea pInputTextarea rows="10" cols="67" #trtdExecuteResult="ngModel" name="trtdExecuteResult" [(ngModel)]="rtd.trtdExecuteResult" autoResize="autoResize"></textarea>
+	    </div>
+	    <div class="ui-grid-col-4">
+	    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>状态码: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="trtdStatusCode" [(ngModel)]="rtd.trtdStatusCode" required="true"/>
+	    </div>
+	    <div class="ui-grid-col-4">
+	    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>运行结果: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="trtdResult" [(ngModel)]="rtd.trtdResult" required="true"/>
+	    </div>
+	    <div class="ui-grid-col-4">
+	    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="button" (click)="goBack()"  label="返回"></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		</div>
+	
+	</form>
+	</div>
+</div>

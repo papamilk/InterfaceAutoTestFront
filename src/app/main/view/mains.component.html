@@ -1,0 +1,6 @@
+<p-dataTable [style]="{'text-align': 'center'}" [value]="mains" [rows]="10" [paginator]="true"
+		selectionMode="single" [(selection)]="selectedMain" dataKey="iemId" (onRowSelect)="handleRowSelect($event)">
+    <p-column field="iemId" header="场景序号"></p-column>
+    <p-column field="mpName" header="项目名称"></p-column>
+    <p-column field="iemName" header="执行场景名称"></p-column>
+</p-dataTable>

@@ -1,0 +1,48 @@
+<div class="left-margin" style="margin-bottom: 20px">
+  <p-growl [value]="msgs" sticky="sticky"></p-growl>
+  <h3>导出测试报告</h3>
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+  	<div class="ui-grid-row">
+  	  <div class="ui-grid-col-2">
+  	  	<label>选择场景名称: </label>
+  	  </div>
+  	  <div class="ui-grid-col-6">
+  	  	<p-dropdown [options]="names" [(ngModel)]="selectedID" placeholder="选择导出的场景名称" [autoWidth]="false"></p-dropdown>
+      </div>
+  	  <div class="ui-grid-col-4">
+      </div>
+  	</div>
+  	<div class="ui-grid-row">
+  	  <div class="ui-grid-col-2">
+  	  </div>
+  	  <div class="ui-grid-col-6">
+  	  	<button pButton (click)="download()" class="ui-button-warning" label="测试报告下载"></button>
+      </div>
+  	  <div class="ui-grid-col-4">
+      </div>
+  	</div>
+  </div>
+  <h3>文件下载</h3>
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-1">
+        </div>
+        <div class="ui-grid-col-3">
+          <button pButton (click)="downloadTemplate()" class="ui-button-warning" label="数据模板下载"></button>
+        </div>
+        <div class="ui-grid-col-3">
+          <button pButton (click)="validateExpectResult()" class="ui-button-warning" label="验证期望结果格式"></button>
+        </div>
+      </div>
+    </div>
+  <h3>自动化接口数据上传</h3>
+  <div class="ui-g" style="width:250px;margin-bottom:10px">
+    <div class="ui-g-12"><p-checkbox [(ngModel)]="checked" binary="true" label="是否覆盖重名场景"></p-checkbox></div>
+  </div>
+  <p-fileUpload name="fileData" (onBeforeUpload)="onBeforeUpload($event)" url="{{uploadAndParseUrl}}" (onUpload)="onUpload($event)" (onError)="onError($event)" maxFileSize="5242880"></p-fileUpload>
+  <div *ngFor="let info of validationInfo" style="margin-top: 10px;margin-bottom: 10px">
+    {{info}}
+  </div>
+</div>
+
+

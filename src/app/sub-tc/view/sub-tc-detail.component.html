@@ -1,0 +1,73 @@
+<div class="left-margin">
+  <h1>执行步骤与测试用例关系详情</h1>
+  <p-growl [value]="msgs" life="3000"></p-growl>
+  <div *ngIf="subTc">
+  <form #userform="ngForm" (ngSubmit)="onSubmit(userform.value)">
+		<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+			<div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>执行步骤与测试用例序号: </label>
+	    	</div>
+		    <div class="ui-grid-col-6">
+		      <input pInputText type="text" name="ietcId" [(ngModel)]="subTc.ietcId" disabled="true"/>
+		    </div>
+	    	<div class="ui-grid-col-4"></div>
+			</div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>执行步骤序号: </label>
+	    	</div>
+		    <div class="ui-grid-col-6">
+		      <input pInputText type="text" name="iemsId" [(ngModel)]="subTc.iemsId" #iemsId="ngModel" pattern="^[1-9][0-9]{0,10}$" placeholder="必填" required="true"/>
+		    </div>
+		    <div class="ui-grid-col-4">
+		    	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!iemsId.valid&&iemsId.dirty">
+		        <i class="fa fa-close"></i>
+							执行步骤序号为正整数，不能为空且不超过11位
+		    	</div>
+		    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>测试用例名称: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="mtcName" [(ngModel)]="subTc.mtcName" #mtcName="ngModel" pattern="^[1-9][0-9]{0,10}$" placeholder="必填" required="true" disabled="true"/>
+	    </div>
+	    <div class="ui-grid-col-4">
+	    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>测试用例序号: </label>
+	    	</div>
+		    <div class="ui-grid-col-6">
+		      <input pInputText type="text" name="mtcId" [(ngModel)]="subTc.mtcId" #mtcId="ngModel" pattern="^[1-9][0-9]{0,10}$" placeholder="必填" required="true"/>
+		    </div>
+		    <div class="ui-grid-col-4">
+		    	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!mtcId.valid&&mtcId.dirty">
+		        <i class="fa fa-close"></i>
+							测试用例序号为正整数，不能为空且不超过11位
+		    	</div>
+		    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="submit" class="ui-button-warning" label="更新" [disabled]="!userform.valid" ></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="button" (click)="goBack()"  label="返回"></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		</div>
+	
+	</form>
+	</div>
+</div>
+

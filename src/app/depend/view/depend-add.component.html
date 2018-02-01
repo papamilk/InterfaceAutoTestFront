@@ -1,0 +1,61 @@
+<div class="left-margin">
+  <h1>添加依赖数据</h1>
+  <p-growl [value]="msgs" life="3000"></p-growl>
+  <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+  	<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>测试数据名称(*): </label>
+        </div>
+        <div class="ui-grid-col-6">
+        	<td-name></td-name>
+        </div>
+        <div class="ui-grid-col-4">
+        </div>
+		  </div>
+		  <div class="ui-grid-row"> 
+		  	<div class="ui-grid-col-2">
+		  		<label>依赖: </label>
+		  	</div>
+		  	<div class="ui-grid-col-6">
+		  		<input type="text" pInputText [(ngModel)]="depend.itddDependency" formControlName="itddDependency" placeholder="必填"/>
+		  	</div>
+		  	<div class="ui-grid-col-4">
+		  		<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['itddDependency'].valid&&userform.controls['itddDependency'].dirty">
+            <i class="fa fa-close"></i>
+						依赖不能为空且不超过50字符
+        	</div>
+		  	</div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2">
+		  		<label>类型: </label>
+		  	</div>
+		    <div class="ui-grid-col-6">
+		    	<input type="text" pInputText [(ngModel)]="depend.itddType" formControlName="itddType" placeholder="选填"/>
+		    </div>
+		    <div class="ui-grid-col-4">
+		    	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['itddType'].valid&&userform.controls['itddType'].dirty">
+            <i class="fa fa-close"></i>
+						类型不超过50字符
+        	</div>
+		    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="submit" class="ui-button-warning" label="添加" [disabled]="!userform.valid"></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="button" (click)="goBack()"  label="返回"></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		</div>
+  </form>
+</div>
+

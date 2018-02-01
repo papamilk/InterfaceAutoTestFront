@@ -1,0 +1,154 @@
+<div class="left-margin">
+  <h1>测试用例详情</h1>
+  <p-growl [value]="msgs" life="3000"></p-growl>
+  <div *ngIf="tc">
+  <form #userform="ngForm" (ngSubmit)="onSubmit(userform.value)">
+		<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+			<div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>测试用例序号: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="mtcId" [(ngModel)]="tc.mtcId" disabled="true"/>
+	    </div>
+	    <div class="ui-grid-col-4"></div>
+		</div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>测试用例名称: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="mtcName" [(ngModel)]="tc.mtcName" #mtcName="ngModel" maxlength="50" placeholder="选填"/>
+	    </div>
+	    <div class="ui-grid-col-4">
+	    	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!mtcName.valid&&mtcName.dirty">
+	        <i class="fa fa-close"></i>
+						测试用例名称不超过50字符
+	    	</div>
+	    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2">
+		  		<label>测试用例类型: </label>
+		  	</div>
+		    <div class="ui-grid-col-6">
+		    	<input type="text" pInputText name="mtcType" [(ngModel)]="tc.mtcType" #mtcType="ngModel" pattern="^[0-2]$" placeholder="0冒烟测试，1阻断测试，2非阻断测试"/>
+		    </div>
+		    <div class="ui-grid-col-4">
+		    	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!mtcType.valid&&mtcType.dirty">
+	        <i class="fa fa-close"></i>
+						0,1或者2
+	    	</div>
+		    </div>
+		  </div>
+	  <div class="ui-grid-row">
+	  	<div class="ui-grid-col-2"></div>
+	  	<div class="ui-grid-col-6">
+	  		<button pButton type="submit" class="ui-button-warning" label="更新" [disabled]="!userform.valid" ></button>
+	  	</div>
+	  	<div class="ui-grid-col-4"></div>
+	  </div>
+	  <div class="ui-grid-row">
+	  	<div class="ui-grid-col-2"></div>
+	  	<div class="ui-grid-col-6">
+	  		<button pButton type="button" (click)="goBack()" label="返回"></button>
+	  	</div>
+	  	<div class="ui-grid-col-4"></div>
+	  	</div>
+		</div>
+    <div class="ui-grid-row">
+      <p-dataTable [value]="tds" selectionMode="single" [(selection)]="selectedTd" (onRowSelect)="onRowSelect($event)"
+                    [responsive]="true" scrollable="true" scrollHeight="200px"
+                   frozenWidth="300px" unfrozenWidth="600px" [style]="{'margin-top':'30px'}">
+        <p-column field="itdName" header="数据名称" [style]="{'text-align':'center','width':'300px', 'height': '30px'}" frozen="true"></p-column>
+        <p-column field="mtcName" header="用例名称" [style]="{'text-align':'center','width':'300px'}"></p-column>
+        <p-column field="mumName" header="接口名称" [style]="{'text-align':'center','width':'300px'}"></p-column>
+        <p-column field="itdCols" header="参数名称" [style]="{'text-align':'center','width':'300px'}">
+          <ng-template let-col let-td="rowData" pTemplate="body">
+            {{td[col.field]|substring: 20 }}
+          </ng-template>
+        </p-column>
+        <p-column field="itdValues" header="参数值" [style]="{'text-align':'center','width':'300px'}">
+          <ng-template let-col let-td="rowData" pTemplate="body">
+            {{td[col.field]|substring: 20 }}
+          </ng-template>
+        </p-column>
+        <p-column field="itdParamTypes" header="参数类型" [style]="{'text-align':'center','width':'300px'}">
+          <ng-template let-col let-td="rowData" pTemplate="body">
+            {{td[col.field]|substring: 20 }}
+          </ng-template>
+        </p-column>
+        <p-column field="itdExpectTime" header="预期运行时间" [style]="{'text-align':'center','width':'120px'}"></p-column>
+        <p-column field="itdExpectResult" header="期望结果" [style]="{'text-align':'center','width':'300px'}">
+          <ng-template let-col let-td="rowData" pTemplate="body">
+            {{td[col.field]|substring: 20 }}
+          </ng-template>
+        </p-column>
+        <p-column field="itdSql" header="SQL" [style]="{'text-align':'center','width':'300px'}">
+          <ng-template let-col let-td="rowData" pTemplate="body">
+            {{td[col.field]|substring: 20 }}
+          </ng-template>
+        </p-column>
+        <p-column field="itdSqlExpectResult" header="SQL期望值" [style]="{'text-align':'center','width':'300px'}">
+          <ng-template let-col let-td="rowData" pTemplate="body">
+            {{td[col.field]|substring: 20 }}
+          </ng-template>
+        </p-column>
+      </p-dataTable>
+    </div>
+	</form>
+    <p-dialog header="测试数据细节" [(visible)]="dialogVisible" [responsive]="true" showEffect="fade" [modal]="true">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="td">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="mumId">数据名称</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="mumId" [(ngModel)]="td.mumId" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="mtcId">用例</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="mtcId" [(ngModel)]="td.mtcId" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="mumName">接口名称</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="mumName" [(ngModel)]="td.mumName" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="itdCols">参数名</label></div>
+            <div class="ui-grid-col-8">
+              <textarea pInputTextarea rows="2" [(ngModel)]="td.itdCols" id="itdCols" autoResize="autoResize"></textarea>
+            </div>
+        </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4"><label for="itdValues">参数值</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="itdValues" [(ngModel)]="td.itdValues" /></div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4"><label for="itdParamTypes">参数类型</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="itdParamTypes" [(ngModel)]="td.itdParamTypes" /></div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4"><label for="itdExpectTime">预期运行时间</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="itdExpectTime" [(ngModel)]="td.itdExpectTime" /></div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4"><label for="itdExpectResult">期望结果</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="itdExpectResult" [(ngModel)]="td.itdExpectResult" /></div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4"><label for="itdSql">SQL</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="itdSql" [(ngModel)]="td.itdSql" /></div>
+      </div>
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-4"><label for="itdSqlExpectResult">SQL期望值</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="itdSqlExpectResult" [(ngModel)]="td.itdSqlExpectResult" /></div>
+      </div>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
+            <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+        </div>
+    </p-footer>
+	</p-dialog>
+	</div>
+</div>
+<div style="margin-top: 200px;"></div>

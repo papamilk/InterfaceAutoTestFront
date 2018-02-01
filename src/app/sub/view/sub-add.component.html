@@ -1,0 +1,47 @@
+<div class="left-margin">
+  <h1>添加执行步骤</h1>
+  <p-growl [value]="msgs" life="3000"></p-growl>
+  <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+  	<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>执行场景名称(*): </label>
+        </div>
+        <div class="ui-grid-col-6">
+        	<main-name></main-name>
+        </div>
+        <div class="ui-grid-col-4">
+        </div>
+		  </div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>请输入步骤数量(*): </label>
+        </div>
+        <div class="ui-grid-col-6">
+        	<input type="text" pInputText [(ngModel)]="count" formControlName="count" placeholder="必填"/>
+        </div>
+        <div class="ui-grid-col-4">
+        	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['count'].valid&&userform.controls['count'].dirty">
+            <i class="fa fa-close"></i>
+						数量为正整数且不超过99
+        	</div>
+        </div>
+		  </div>	  
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="submit" class="ui-button-warning" label="添加" [disabled]="!userform.valid"></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="button" (click)="goBack()"  label="返回"></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		</div>
+  </form>
+</div>
+

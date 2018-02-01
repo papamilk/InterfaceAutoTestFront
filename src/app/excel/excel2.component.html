@@ -1,0 +1,75 @@
+<div style="margin: 5px">
+  <p-growl [value]="msgs" sticky="sticky"></p-growl>
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">
+        <h4 style="margin: 0px">导出测试报告</h4>
+      </div>
+      <div class="ui-grid-col-6">
+        <p-dropdown [options]="names" [(ngModel)]="selectedID" placeholder="选择导出的场景名称" [autoWidth]="false"></p-dropdown>
+      </div>
+      <div class="ui-grid-col-4">
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">
+      </div>
+      <div class="ui-grid-col-6">
+        <button pButton (click)="download()" class="ui-button-warning" label="测试报告下载"></button>
+      </div>
+      <div class="ui-grid-col-4">
+      </div>
+    </div>
+  </div>
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">
+        <h4 style="margin: 0px">自动化接口数据模板下载</h4>
+      </div>
+      <div class="ui-grid-col-6">
+        <button pButton (click)="downloadTemplate()" class="ui-button-warning" label="数据模板下载"></button>
+      </div>
+      <div class="ui-grid-col-4">
+      </div>
+    </div>
+  </div>
+  <h4 style="margin: 0px">开发接口文档上传</h4>
+  <p-fileUpload accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name="fileData" url="{{uploadInterfaceFileUrl}}" (onUpload)="onUploadInterfaceFile($event)" (onError)="onError($event)" maxFileSize="5242880"></p-fileUpload>
+  <h4 style="margin: 0px">自动化接口数据上传</h4>
+  <p-fileUpload accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name="fileData" url="{{uploadUrl}}" (onUpload)="onUpload($event)" (onError)="onError($event)" maxFileSize="5242880"></p-fileUpload>
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">
+        <span>旧版本号：</span>
+      </div>
+      <div class="ui-grid-col-4">
+        <input type="text" pInputText/>
+      </div>
+    </div>
+  </div>
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">
+        <span>新版本号：</span>
+      </div>
+      <div class="ui-grid-col-4">
+        <input type="text" pInputText/>
+      </div>
+    </div>
+  </div>
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">
+        <button pButton (click)="parseDataFile()" class="ui-button-warning" label="解析接口文档"></button>
+      </div>
+      <div class="ui-grid-col-2">
+        <button pButton (click)="compareDoc()" class="ui-button-warning" label="接口文档对比"></button>
+      </div>
+      <div class="ui-grid-col-3">
+        <button pButton (click)="downloadDiffCompare()" class="ui-button-warning" label="接口文档对比报告下载"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

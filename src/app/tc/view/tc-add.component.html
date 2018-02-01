@@ -1,0 +1,55 @@
+<div class="left-margin">
+  <h1>添加测试用例</h1>
+  <p-growl [value]="msgs" life="3000"></p-growl>
+  <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+  	<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+		  <div class="ui-grid-row"> 
+		  	<div class="ui-grid-col-2">
+		  		<label>测试用例名称: </label>
+		  	</div>
+		  	<div class="ui-grid-col-6">
+		  		<input type="text" pInputText [(ngModel)]="tc.mtcName" formControlName="mtcName" placeholder="必填"/>
+		  	</div>
+		  	<div class="ui-grid-col-4">
+		  		<div class="ui-message ui-messages-error ui-corner-all" *ngIf="recommend">
+            <i class="fa fa-close"></i>
+						测试用例名称已存在
+        	</div>
+		  		<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['mtcName'].valid&&userform.controls['mtcName'].dirty">
+            <i class="fa fa-close"></i>
+						测试用例名称不为空且不超过50字符
+        	</div>
+		  	</div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2">
+		  		<label>测试用例类型: </label>
+		  	</div>
+		    <div class="ui-grid-col-6">
+		    	<input type="text" pInputText [(ngModel)]="tc.mtcType" formControlName="mtcType" placeholder="0冒烟测试，1阻断测试，2非阻断测试"/>
+		    </div>
+		    <div class="ui-grid-col-4">
+		    	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['mtcType'].valid&&userform.controls['mtcType'].dirty">
+            <i class="fa fa-close"></i>
+						0,1或者2
+        	</div>
+		    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="submit" class="ui-button-warning" label="添加" [disabled]="!userform.valid||recommend"></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="button" (click)="goBack()"  label="返回"></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		</div>
+  </form>
+</div>
+

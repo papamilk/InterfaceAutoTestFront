@@ -1,0 +1,131 @@
+<div class="left-margin">
+  <h1>添加测试数据</h1>
+  <h3>文件上传</h3>
+  <p-growl [value]="msgs" life="3000"></p-growl>
+  <p-fileUpload accept="text/csv,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name="fileData" url="{{uploadUrl}}" (onUpload)="onUpload($event)" (onError)="onError($event)" maxFileSize="5242880"></p-fileUpload>
+  <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+  	<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>接口名称: </label>
+        </div>
+        <div class="ui-grid-col-6">
+        	<url-name></url-name>
+        </div>
+        <div class="ui-grid-col-4">
+        </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2">
+		  		<label>测试数据名称: </label>
+		  	</div>
+		  	<div class="ui-grid-col-6">
+		  		<input type="text" pInputText formControlName="itdName" placeholder="必填"/>
+		  	</div>
+		  	<div class="ui-grid-col-4">
+		  		<div class="ui-message ui-messages-error ui-corner-all" *ngIf="recommend">
+            <i class="fa fa-close"></i>
+						测试数据名称已存在
+        	</div>
+		  		<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['itdName'].valid&&userform.controls['itdName'].dirty">
+            <i class="fa fa-close"></i>
+						测试数据名称不为空且不超过30字符
+        	</div>
+		  	</div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2">
+		  		<label>阻断类型: </label>
+		  	</div>
+		    <div class="ui-grid-col-6">
+		    	<input type="text" pInputText formControlName="itdType" placeholder="0阻断，1非阻断"/>
+		    </div>
+		    <div class="ui-grid-col-4">
+		    	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['itdType'].valid&&userform.controls['itdType'].dirty">
+            <i class="fa fa-close"></i>
+						阻断类型为0或者1
+        	</div>
+		    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2">
+		  		<label>预期运行时间: </label>
+		  	</div>
+		    <div class="ui-grid-col-6">
+		    	<input type="text" pInputText formControlName="itdExpectTime" placeholder="无预期时间，填入0"/>
+		    </div>
+		    <div class="ui-grid-col-4">
+		    	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['itdExpectTime'].valid&&userform.controls['itdExpectTime'].dirty">
+            <i class="fa fa-close"></i>
+						非负数，不超过8位
+        	</div>
+		    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2">
+		  		<label>参数名: </label>
+		  	</div>
+		    <div class="ui-grid-col-6">
+		    	<textarea pInputTextarea rows="2" formControlName="itdCols" autoResize="autoResize" placeholder="必填"></textarea>
+		    </div>
+		    <div class="ui-grid-col-4">
+		    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2">
+		  		<label>参数值: </label>
+		  	</div>
+		    <div class="ui-grid-col-6">
+		    	<textarea pInputTextarea rows="2" formControlName="itdValues" autoResize="autoResize" placeholder="必填"></textarea>
+		    </div>
+		    <div class="ui-grid-col-4">
+		    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2">
+		  		<label>预期结果: </label>
+		  	</div>
+		    <div class="ui-grid-col-6">
+		    	<textarea pInputTextarea rows="8" formControlName="itdExpectResult" autoResize="autoResize" placeholder="必填"></textarea>
+		    </div>
+		    <div class="ui-grid-col-4">
+		    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2">
+		  		<label>SQL: </label>
+		  	</div>
+		    <div class="ui-grid-col-6">
+		    	<textarea pInputTextarea rows="8" formControlName="itdSql" autoResize="autoResize" placeholder="选填"></textarea>
+		    </div>
+		    <div class="ui-grid-col-4">
+		    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2">
+		  		<label>SQL期望值: </label>
+		  	</div>
+		    <div class="ui-grid-col-6">
+		    	<textarea pInputTextarea rows="8" formControlName="itdSqlExpectResult" autoResize="autoResize" placeholder="选填"></textarea>
+		    </div>
+		    <div class="ui-grid-col-4">
+		    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="submit" class="ui-button-warning" label="添加" [disabled]="!userform.valid"></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="button" (click)="goBack()"  label="返回"></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		</div>
+  </form>
+</div>
+

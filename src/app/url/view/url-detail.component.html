@@ -1,0 +1,76 @@
+<div class="left-margin">
+  <h1>接口详情</h1>
+  <p-growl [value]="msgs" life="3000"></p-growl>
+  <div *ngIf="url">
+  <form #userform="ngForm" (ngSubmit)="onSubmit(userform.value)">
+		<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+			<div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>接口序号: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="mumId" [(ngModel)]="url.mumId" disabled="true"/>
+	    </div>
+	    <div class="ui-grid-col-4"></div>
+		</div>
+		<div class="ui-grid-row"> 
+		  	<div class="ui-grid-col-2">
+		  		<label>接口名称: </label>
+		  	</div>
+		  	<div class="ui-grid-col-6">
+		  		<input type="text" pInputText name="mumName" [(ngModel)]="url.mumName" #mumName="ngModel" maxlength="50" placeholder="选填"/>
+		  	</div>
+		  	<div class="ui-grid-col-4">
+		  		<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!mumName.valid&&mumName.dirty">
+	        <i class="fa fa-close"></i>
+						接口名称不超过50字符
+	    	</div>
+		  	</div>
+		  </div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>请求路径(*): </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="mumUrlPath" [(ngModel)]="url.mumUrlPath" #mumUrlPath="ngModel" maxlength="80" placeholder="必填" required="true"/>
+	    </div>
+	    <div class="ui-grid-col-4">
+	    	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!mumUrlPath.valid&&mumUrlPath.dirty">
+	        <i class="fa fa-close"></i>
+						请求路径不超过80字符
+	    	</div>
+	    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2">
+		  		<label>请求方式(*): </label>
+		  	</div>
+		    <div class="ui-grid-col-6">
+		    	<input type="text" pInputText name="mumMethodType" [(ngModel)]="url.mumMethodType" #mumMethodType="ngModel" maxlength="10"/>
+		    </div>
+		    <div class="ui-grid-col-4">
+		    	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!mumMethodType.valid&&mumMethodType.dirty">
+	        <i class="fa fa-close"></i>
+						请求方式为get/post/delete/put
+	    	</div>
+		    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="submit" class="ui-button-warning" label="更新" [disabled]="!userform.valid" ></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="button" (click)="goBack()"  label="返回"></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		</div>
+	
+	</form>
+	</div>
+</div>

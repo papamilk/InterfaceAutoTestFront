@@ -1,0 +1,6 @@
+<p-dataTable [style]="{'text-align': 'center'}" [value]="urlTcs" [rows]="10" [paginator]="true"
+		selectionMode="single" [(selection)]="selectedUrlTc" dataKey="iutcId" (onRowSelect)="handleRowSelect($event)">
+    <p-column field="iutcId" header="测试用例与接口序号"></p-column>
+    <p-column field="mtcName" header="测试用例名称"></p-column>
+    <p-column field="mumName" header="接口名称"></p-column>
+</p-dataTable>

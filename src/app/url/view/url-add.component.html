@@ -1,0 +1,69 @@
+<div class="left-margin">
+  <h1>添加接口</h1>
+  <p-growl [value]="msgs" life="3000"></p-growl>
+  <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+  	<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2">
+		  		<label>接口名称: </label>
+		  	</div>
+		    <div class="ui-grid-col-6">
+		    	<input type="text" pInputText [(ngModel)]="url.mumName" formControlName="mumName" placeholder="必填"/>
+		    </div>
+		    <div class="ui-grid-col-4">
+		    	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="recommend">
+            <i class="fa fa-close"></i>
+						接口名称已存在
+        	</div>
+		    	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['mumName'].valid&&userform.controls['mumName'].dirty">
+            <i class="fa fa-close"></i>
+						接口名称不为空且不超过50字符
+        	</div>
+		    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>请求路径(*): </label>
+        </div>
+        <div class="ui-grid-col-6">
+          <input pInputText type="text" [(ngModel)]="url.mumUrlPath" formControlName="mumUrlPath" placeholder="必填"/>
+        </div>
+        <div class="ui-grid-col-4">
+        	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['mumUrlPath'].valid&&userform.controls['mumUrlPath'].dirty">
+            <i class="fa fa-close"></i>
+						请求路径不能为空且不超过80字符
+        	</div>
+        </div>
+		  </div>
+		  <div class="ui-grid-row"> 
+		  	<div class="ui-grid-col-2">
+		  		<label>请求方式: </label>
+		  	</div>
+		  	<div class="ui-grid-col-6">
+		  		<input type="text" pInputText [(ngModel)]="url.mumMethodType" formControlName="mumMethodType" placeholder="默认post请求"/>
+		  	</div>
+		  	<div class="ui-grid-col-4">
+		  		<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['mumMethodType'].valid&&userform.controls['mumMethodType'].dirty">
+            <i class="fa fa-close"></i>
+						请检查输入内容
+        	</div>
+		  	</div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="submit" class="ui-button-warning" label="添加" [disabled]="!userform.valid||recommend"></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="button" (click)="goBack()"  label="返回"></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		</div>
+  </form>
+</div>
+

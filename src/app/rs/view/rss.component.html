@@ -1,0 +1,7 @@
+<p-dataTable [style]="{'text-align': 'center'}" [value]="rss" [rows]="10" [paginator]="true"
+		selectionMode="single" [(selection)]="selectedRS" dataKey="iemId" (onRowSelect)="handleRowSelect($event)">
+    <p-column field="trsId" header="序号"></p-column>
+    <p-column field="iemsId" header="执行步骤序号"></p-column>
+    <p-column field="trsName" header="执行步骤名称"></p-column>
+    <p-column field="trsResult" header="运行结果"></p-column>
+</p-dataTable>

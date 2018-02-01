@@ -1,0 +1,51 @@
+<div class="left-margin">
+  <h1>添加执行步骤与测试用例关系</h1>
+  <p-growl [value]="msgs" life="3000"></p-growl>
+  	<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+  		<div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>执行场景: </label>
+        </div>
+        <div class="ui-grid-col-6">
+        	<p-dropdown [options]="mainNames" [(ngModel)]="selectedMain" (onChange)="onMainChange()" placeholder="选择执行场景" [autoWidth]="false"></p-dropdown >
+        </div>
+        <div class="ui-grid-col-4">
+        </div>
+		  </div>	  
+		  <div *ngIf="subs" class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>执行步骤: </label>
+        </div>
+        <div class="ui-grid-col-6">
+        	<p-dropdown [options]="subNames" [(ngModel)]="selectedSub" (onChange)="onSubChange()" placeholder="选择执行步骤" [autoWidth]="false"></p-dropdown >
+        </div>
+        <div class="ui-grid-col-4">
+        </div>
+		  </div>
+		  <div *ngIf="tcs" class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>测试用例: </label>
+        </div>
+        <div class="ui-grid-col-6">
+        	<p-dropdown [options]="tcNames" [(ngModel)]="selectedTc" (onChange)="onTcChange()" placeholder="选择测试用例" [autoWidth]="false"></p-dropdown >
+        </div>
+        <div class="ui-grid-col-4">
+        </div>
+		  </div>	
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton (click)="onSubmit()" class="ui-button-warning" label="添加" [disabled]="!(selectedSub&&selectedTc)"></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="button" (click)="goBack()"  label="返回"></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		</div>
+</div>
+

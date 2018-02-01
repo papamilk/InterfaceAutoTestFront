@@ -1,0 +1,93 @@
+<div class="left-margin">
+  <h1>执行场景结果详情</h1>
+  <p-growl [value]="msgs" life="3000"></p-growl>
+  <div *ngIf="rm">
+  <form #userform="ngForm" (ngSubmit)="onSubmit(userform.value)">
+		<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+			<div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>序号: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="trmId" [(ngModel)]="rm.trmId" #trmId="ngModel" disabled="true"/>
+	    </div>
+	    <div class="ui-grid-col-4"></div>
+		</div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>项目序号: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="mpId" [(ngModel)]="rm.mpId" #mpId="ngModel" pattern="^[1-9][0-9]{0,10}$" placeholder="必填" required="true"/>
+	    </div>
+	    <div class="ui-grid-col-4">
+	    	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!mpId.valid&&mpId.dirty">
+	        <i class="fa fa-close"></i>
+						项目序号为正整数，不能为空且不超过11位
+	    	</div>
+	    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>执行场景序号: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="iemId" [(ngModel)]="rm.iemId" #iemId="ngModel" pattern="^[1-9][0-9]{0,10}$" placeholder="必填" required="true"/>
+	    </div>
+	    <div class="ui-grid-col-4">
+	    	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!iemId.valid&&iemId.dirty">
+	        <i class="fa fa-close"></i>
+						执行场景序号为正整数，不能为空且不超过11位
+	    	</div>
+	    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2">
+		  		<label>执行场景名称: </label>
+		  	</div>
+		    <div class="ui-grid-col-6">
+		    	<input type="text" pInputText name="iemName" [(ngModel)]="rm.iemName" #iemName="ngModel" maxlength="30" placeholder="选填"/>
+		    </div>
+		    <div class="ui-grid-col-4">
+		    	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!iemName.valid&&iemName.dirty">
+	        <i class="fa fa-close"></i>
+						执行名称不超过30字符
+	    	</div>
+		    </div>
+		  </div>
+		  <div class="ui-grid-row"> 
+		  	<div class="ui-grid-col-2">
+		  		<label>执行场景代号: </label>
+		  	</div>
+		  	<div class="ui-grid-col-6">
+		  		<input type="text" pInputText name="iemCode" [(ngModel)]="rm.iemCode" #iemCode="ngModel" maxlength="20" placeholder="选填"/>
+		  	</div>
+		  	<div class="ui-grid-col-4">
+		  		<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!iemCode.valid&&iemCode.dirty">
+	        <i class="fa fa-close"></i>
+						执行代号不超过20字符
+	    	</div>
+		  	</div>
+		  </div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>运行结果: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="trmResult" #trmResult="ngModel" [(ngModel)]="rm.trmResult" required="true"/>
+	    </div>
+	    <div class="ui-grid-col-4">
+	    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="button" (click)="goBack()"  label="返回"></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		</div>
+	
+	</form>
+	</div>
+</div>

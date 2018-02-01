@@ -1,0 +1,76 @@
+<div class="left-margin">
+  <h1>项目详情信息</h1>
+  <p-growl [value]="msgs" life="3000"></p-growl>
+  <div *ngIf="project">
+  <form #userform="ngForm" (ngSubmit)="onSubmit(userform.value)">
+		<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+			<div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>项目序号: </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="mpId" [(ngModel)]="project.mpId" disabled="true"/>
+	    </div>
+	    <div class="ui-grid-col-4"></div>
+		</div>
+		  <div class="ui-grid-row">
+		    <div class="ui-grid-col-2">
+					 <label>项目名称(*): </label>
+	    </div>
+	    <div class="ui-grid-col-6">
+	      <input pInputText type="text" name="mpName" [(ngModel)]="project.mpName" #mpName="ngModel" maxlength="30" placeholder="必填" required="true"/>
+	    </div>
+	    <div class="ui-grid-col-4">
+	    	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!mpName.valid&&mpName.dirty">
+	        <i class="fa fa-close"></i>
+						项目名称不能为空且最长不超过30字符
+	    	</div>
+	    </div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2">
+		  		<label>URL前缀(*): </label>
+		  	</div>
+		    <div class="ui-grid-col-6">
+		    	<input type="text" pInputText name="mpUrlPrefixion" [(ngModel)]="project.mpUrlPrefixion" #mpUrlPrefixion="ngModel" maxlength="50" placeholder="必填" required="true"/>
+		    </div>
+		    <div class="ui-grid-col-4">
+		    	<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!mpUrlPrefixion.valid&&mpUrlPrefixion.dirty">
+	        <i class="fa fa-close"></i>
+						URL前缀不能为空且最长不超过50字符
+	    	</div>
+		    </div>
+		  </div>
+		  <div class="ui-grid-row"> 
+		  	<div class="ui-grid-col-2">
+		  		<label>项目描述: </label>
+		  	</div>
+		  	<div class="ui-grid-col-6">
+		  		<input type="text" pInputText name="mpDescription" [(ngModel)]="project.mpDescription" #mpDescription="ngModel" maxlength="30" placeholder="选填"/>
+		  	</div>
+		  	<div class="ui-grid-col-4">
+		  		<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!mpDescription.valid&&mpDescription.dirty">
+	        <i class="fa fa-close"></i>
+						项目描述最长不超过30字符
+	    	</div>
+		  	</div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="submit" class="ui-button-warning" label="更新" [disabled]="!userform.valid" ></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		  <div class="ui-grid-row">
+		  	<div class="ui-grid-col-2"></div>
+		  	<div class="ui-grid-col-6">
+		  		<button pButton type="button" (click)="goBack()"  label="返回"></button>
+		  	</div>
+		  	<div class="ui-grid-col-4"></div>
+		  </div>
+		</div>
+	
+	</form>
+	</div>
+</div>

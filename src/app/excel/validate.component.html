@@ -1,0 +1,18 @@
+<div class="left-margin" style="margin-bottom: 20px">
+  <h2>验证期望结果</h2>
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-10">
+        <textarea pInputTextarea rows="20" [(ngModel)]="expectResult" name="expectResult" autoResize="autoResize" placeholder="期望结果"></textarea>
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-3">
+        <button pButton (click)="validate()" class="ui-button-warning" label="验证"></button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="validationInfo" style="margin-top: 10px;margin-bottom: 10px">
+    {{validationInfo}}
+  </div>
+</div>

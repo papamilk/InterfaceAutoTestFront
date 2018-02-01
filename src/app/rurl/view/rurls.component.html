@@ -1,0 +1,7 @@
+<p-dataTable [value]="rurls" [rows]="10" [paginator]="true"
+		selectionMode="single" [(selection)]="selectedRURL" dataKey="truId" (onRowSelect)="handleRowSelect($event)">
+    <p-column field="truId" header="序号"></p-column>
+    <p-column field="mumId" header="接口序号"></p-column>
+    <p-column field="mumName" header="接口名称"></p-column>
+    <p-column field="truResult" header="运行结果"></p-column>
+</p-dataTable>

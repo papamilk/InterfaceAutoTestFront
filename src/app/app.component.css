@@ -1,0 +1,27 @@
+.layout-wrapper {
+  padding: 0;
+  margin: 0;
+}
+#layout-topbar {
+	position: fixed;
+  background-color: #20272a;
+  height: 70px;
+  padding: 0;
+  display: block;
+  width: 100%;
+  z-index: 1;
+}
+#layout-sidebar {
+	position: fixed;
+	left: 0;
+	top: 70px;
+	height: 100%;
+	background-color: #fff;
+	overflow: hidden;
+	width: 300px;
+}
+#layout-content {
+	margin-left: 300px;
+	padding-top: 70px;
+	background-color: #fff;
+}

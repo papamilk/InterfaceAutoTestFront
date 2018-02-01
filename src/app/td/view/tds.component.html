@@ -1,0 +1,22 @@
+<h2>导出测试数据文档</h2>
+<p-growl [value]="msgs" life="3000"></p-growl>
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-3">
+      <p-dropdown [options]="projectNames" [(ngModel)]="selectedMpId" placeholder="选择项目" [autoWidth]="false"></p-dropdown>
+    </div>
+    <div class="ui-grid-col-3">
+      <p-dropdown [options]="mainNames" [(ngModel)]="selectedIemId" placeholder="选择执行场景" [autoWidth]="false"></p-dropdown>
+    </div>
+    <div class="ui-grid-col-3">
+      <button pButton (click)="downloadDataFile()" class="ui-button-warning" label="导出测试数据文档"></button>
+    </div>
+  </div>
+</div>
+<p-dataTable [style]="{'text-align': 'center'}" [value]="tds" [rows]="10" [paginator]="true"
+		selectionMode="single" [(selection)]="selectedTd" dataKey="itdId" (onRowSelect)="handleRowSelect($event)">
+    <p-column field="itdId" header="测试数据序号"></p-column>
+    <p-column field="mumName" header="接口名称"></p-column>
+    <p-column field="mtcName" header="用例名称"></p-column>
+    <p-column field="itdName" header="测试数据名称"></p-column>
+</p-dataTable>
